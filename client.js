@@ -369,17 +369,23 @@ window.__ModuleLoader__.load({
 .mpr-back:hover { border-color: var(--mpr-accent); color: var(--mpr-accent); }
 .mpr-crumb { min-width: 0; font-size: 11px; color: var(--mpr-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mpr-detail-scroll { flex: 1 1 auto; min-height: 0; overflow: auto; }
-.mpr-detail-inner { max-width: 900px; margin: 0 auto; padding: 28px 28px 56px; }
-.mpr-detail-head h1 { margin: 0; font-family: var(--mpr-serif); font-size: 27px; font-weight: 600; line-height: 1.2; letter-spacing: .005em; }
-.mpr-detail-tagline { margin: 7px 0 0; font-size: 13.5px; color: var(--mpr-muted); }
-.mpr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.mpr-detail-inner { width: 100%; max-width: 1280px; margin: 0 auto; padding: 32px 44px 80px; }
+.mpr-detail-head h1 { margin: 0; font-family: var(--mpr-serif); font-size: 32px; font-weight: 600; line-height: 1.18; letter-spacing: .002em; }
+.mpr-detail-tagline { margin: 9px 0 0; max-width: 68ch; font-size: 15px; line-height: 1.65; color: var(--mpr-muted); }
+.mpr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
 .mpr-chip { font-size: 10.5px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--mpr-border); color: var(--mpr-muted); background: transparent; }
-.mpr-detail-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(210px, 1fr); gap: 36px; margin-top: 24px; align-items: start; }
+.mpr-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 26px; }
+.mpr-stat { min-width: 0; padding: 15px 17px; border: 1px solid var(--mpr-border); border-radius: 12px; background: var(--mpr-surface); }
+.mpr-stat-k { font-size: 10.5px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--mpr-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mpr-stat-v { margin-top: 7px; font-size: 21px; font-weight: 600; letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+.mpr-stat-s { margin-top: 5px; font-size: 11.5px; line-height: 1.5; color: var(--mpr-muted); }
+.mpr-stat-s--warn { color: var(--mpr-warn); }
+.mpr-detail-grid { display: grid; grid-template-columns: minmax(0, 1fr) 316px; gap: 44px; margin-top: 30px; align-items: start; }
 .mpr-detail-side { position: sticky; top: 0; display: flex; flex-direction: column; gap: 10px; }
-.mpr-sec { padding: 22px 0; border-top: 1px solid var(--mpr-border); }
+.mpr-sec { padding: 26px 0; border-top: 1px solid var(--mpr-border); }
 .mpr-detail-main .mpr-sec:first-child { border-top: 0; padding-top: 0; }
-.mpr-sec-title { margin: 0 0 10px; font-family: var(--mpr-sans); font-size: 10.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--mpr-muted); }
-.mpr-prose { margin: 0; font-size: 13px; line-height: 1.85; }
+.mpr-sec-title { margin: 0 0 12px; font-family: var(--mpr-sans); font-size: 11px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; color: var(--mpr-muted); }
+.mpr-prose { margin: 0; max-width: 74ch; font-size: 14px; line-height: 1.9; }
 .mpr-meta-line { display: none; }
 .mpr-table { border: 1px solid var(--mpr-border); border-radius: 10px; overflow: hidden; background: var(--mpr-surface); }
 .mpr-tr { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 8px; align-items: center; padding: 9px 12px; font-size: 12px; border-top: 1px solid var(--mpr-border); font-variant-numeric: tabular-nums; }
@@ -405,35 +411,38 @@ window.__ModuleLoader__.load({
 .mpr-fit-grade--d { color: var(--mpr-bad); }
 .mpr-fit-bar { height: 6px; border-radius: 3px; background: var(--mpr-surface-3); overflow: hidden; }
 .mpr-fit-bar i { display: block; height: 100%; background: var(--mpr-accent); border-radius: 3px; }
-.mpr-cases { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
-.mpr-case { display: flex; gap: 12px; padding: 10px 12px; border: 1px solid var(--mpr-border); border-radius: 10px; background: var(--mpr-surface); }
+.mpr-cases { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.mpr-case { display: flex; gap: 12px; padding: 12px 14px; border: 1px solid var(--mpr-border); border-radius: 10px; background: var(--mpr-surface); }
 .mpr-case-no { flex: 0 0 auto; font-family: var(--mpr-serif); font-size: 18px; line-height: 1.1; color: var(--mpr-accent); }
 .mpr-case-scenario { margin-bottom: 2px; font-size: 10px; letter-spacing: .06em; color: var(--mpr-muted); }
-.mpr-case-text { margin: 0; font-size: 12.5px; line-height: 1.65; }
+.mpr-case-text { margin: 0; font-size: 13px; line-height: 1.7; }
 .mpr-bullets { margin: 0; padding-left: 18px; }
-.mpr-bullets li { font-size: 12.5px; line-height: 1.7; margin: 3px 0; }
+.mpr-bullets li { font-size: 13.5px; line-height: 1.8; margin: 4px 0; }
 .mpr-proscons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .mpr-pc { border: 1px solid var(--mpr-border); border-radius: 10px; padding: 10px 12px; background: var(--mpr-surface); }
 .mpr-pc h3 { margin: 0 0 6px; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--mpr-muted); }
 .mpr-pc ul { margin: 0; padding-left: 16px; }
 .mpr-pc li { font-size: 12px; line-height: 1.65; margin: 3px 0; }
-.mpr-params { border: 1px solid var(--mpr-border); border-radius: 10px; overflow: hidden; background: var(--mpr-surface); }
-.mpr-param { display: flex; gap: 10px; padding: 7px 12px; border-top: 1px solid var(--mpr-border); font-size: 12px; }
+.mpr-params { border: 1px solid var(--mpr-border); border-radius: 12px; overflow: hidden; background: var(--mpr-surface); }
+.mpr-param { display: flex; gap: 10px; padding: 8px 14px; border-top: 1px solid var(--mpr-border); font-size: 12.5px; }
 .mpr-param:first-child { border-top: 0; }
-.mpr-param-k { flex: 0 0 76px; color: var(--mpr-muted); }
+.mpr-param-k { flex: 0 0 78px; color: var(--mpr-muted); }
 .mpr-param-v { flex: 1 1 auto; min-width: 0; word-break: break-word; }
 .mpr-links { display: flex; flex-direction: column; gap: 4px; }
 .mpr-a { color: var(--mpr-accent); text-decoration: none; font-size: 12px; word-break: break-all; }
 .mpr-a:hover { text-decoration: underline; }
-.mpr-side-card { border: 1px solid var(--mpr-border); border-radius: 10px; padding: 12px; background: var(--mpr-surface); }
-.mpr-side-card h3 { margin: 0 0 6px; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--mpr-muted); }
-.mpr-side-big { font-family: var(--mpr-serif); font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; }
-.mpr-side-line { margin-top: 4px; font-size: 11.5px; color: var(--mpr-muted); }
-@media (max-width: 880px) {
+@media (max-width: 1120px) {
+  .mpr-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mpr-cases { grid-template-columns: 1fr; }
+  .mpr-detail-grid { gap: 30px; }
+}
+@media (max-width: 940px) {
   .mpr-detail-grid { grid-template-columns: 1fr; }
   .mpr-detail-side { position: static; }
 }
 @media (max-width: 720px) {
+  .mpr-detail-inner { padding: 24px 20px 56px; }
+  .mpr-stats { grid-template-columns: 1fr; }
   .mpr-side { flex-basis: 150px; }
   .mpr-proscons { grid-template-columns: 1fr; }
 }
@@ -1178,6 +1187,16 @@ window.__ModuleLoader__.load({
       push(model.sourceUrl)
       if (model.referencePrice && model.referencePrice.url) push(model.referencePrice.url)
       const description = model.descriptionZh || ''
+      const lead = (research && research.tagline) || description || ''
+      const overview = description && description !== lead ? description : ''
+      const price = model.price || {}
+      const inputLabel = Number.isFinite(price.input)
+        ? `¥${cnyPrice(price.input, rate, price.cny && price.cny.input)}`
+        : '—'
+      const outputLabel = Number.isFinite(price.output)
+        ? `¥${cnyPrice(price.output, rate, price.cny && price.cny.output)}`
+        : '—'
+      const typicalCost = yuanCost(row ? row.cost : taskCost(model, scenario.inputTokens, scenario.outputTokens), rate)
 
       return h('div', { className: 'mpr-detail' },
         h('div', { className: 'mpr-detail-bar' },
@@ -1187,7 +1206,7 @@ window.__ModuleLoader__.load({
           h('div', { className: 'mpr-detail-inner' },
             h('header', { className: 'mpr-detail-head' },
               h('h1', null, model.name),
-              h('p', { className: 'mpr-detail-tagline' }, (research && research.tagline) || description || ''),
+              lead ? h('p', { className: 'mpr-detail-tagline' }, lead) : null,
               h('div', { className: 'mpr-chips' },
                 h('span', { className: 'mpr-chip' }, `${t('tier')} · ${model.slotLabel || '—'}`),
                 h('span', { className: 'mpr-chip' }, `${contextLabel(model.context)} ${t('context')}`),
@@ -1195,12 +1214,31 @@ window.__ModuleLoader__.load({
                 model.capabilities && model.capabilities.openWeights
                   ? h('span', { className: 'mpr-chip' }, t('openWeights'))
                   : null)),
+            h('div', { className: 'mpr-stats' },
+              h('div', { className: 'mpr-stat' },
+                h('div', { className: 'mpr-stat-k' }, `${scenario.name} · ${t('typicalTask')}`),
+                h('div', { className: 'mpr-stat-v' }, typicalCost),
+                h('div', { className: 'mpr-stat-s' }, `${contextLabel(scenario.inputTokens)} ${t('input')} + ${contextLabel(scenario.outputTokens)} ${t('output')}`),
+                row && row.warning
+                  ? h('div', { className: 'mpr-stat-s mpr-stat-s--warn' }, row.warning)
+                  : null),
+              h('div', { className: 'mpr-stat' },
+                h('div', { className: 'mpr-stat-k' }, t('input')),
+                h('div', { className: 'mpr-stat-v' }, inputLabel),
+                h('div', { className: 'mpr-stat-s' }, `${t('perMillion')} · ${t('officialApi')}`)),
+              h('div', { className: 'mpr-stat' },
+                h('div', { className: 'mpr-stat-k' }, t('output')),
+                h('div', { className: 'mpr-stat-v' }, outputLabel),
+                h('div', { className: 'mpr-stat-s' }, `${t('perMillion')} · ${t('officialApi')}`)),
+              h('div', { className: 'mpr-stat' },
+                h('div', { className: 'mpr-stat-k' }, t('context')),
+                h('div', { className: 'mpr-stat-v' }, contextLabel(model.context)),
+                h('div', { className: 'mpr-stat-s' }, `${t('maxOutput')} ${contextLabel(model.maxOutput)}`))),
             h('div', { className: 'mpr-detail-grid' },
               h('div', { className: 'mpr-detail-main' },
-                h(Section, { title: t('overview') },
-                  h('p', { className: 'mpr-prose' },
-                    (research && research.position ? `${research.position}档。` : ''),
-                    description || '暂无中文简介。')),
+                overview
+                  ? h(Section, { title: t('overview') }, h('p', { className: 'mpr-prose' }, overview))
+                  : null,
                 h(Section, { title: t('priceCompare') },
                   h(PriceTable, { model, t, rate, scenario }),
                   h(PriceNotes, { model, rate, t })),
@@ -1237,13 +1275,6 @@ window.__ModuleLoader__.load({
                     rel: 'noreferrer',
                   }, url))))),
               h('aside', { className: 'mpr-detail-side' },
-                h('div', { className: 'mpr-side-card' },
-                  h('h3', null, `${scenario.name} · ${t('typicalTask')}`),
-                  h('div', { className: 'mpr-side-big' }, yuanCost(row ? row.cost : taskCost(model, scenario.inputTokens, scenario.outputTokens), rate)),
-                  h('div', { className: 'mpr-side-line' }, `${contextLabel(scenario.inputTokens)} 输入 + ${contextLabel(scenario.outputTokens)} 输出`),
-                  row && row.warning
-                    ? h('div', { className: 'mpr-side-line' }, `⚠ ${row.warning}`)
-                    : null),
                 h('div', { className: 'mpr-params' },
                   paramRow(t('tier'), model.slotLabel || '—'),
                   paramRow(t('context'), contextLabel(model.context)),

@@ -29,15 +29,17 @@ DSH 插件：左侧栏图标打开价格面板，按你的工作场景给出 **�
 每张卡只保留三样东西：模型名、人民币单价（输入/输出，每百万 token）、本场景典型请求的估算花费，
 下面一句中文简介收尾；有峰谷价的模型在价格右侧补一行闲时价。卡片不显示厂商名、排名和 A/B/C 评级图标。
 
-点卡片进入**整页详情**（面板内切换，不弹窗），包含：
+点卡片进入**整页详情**（面板内切换，不弹窗）。版面按 1280px 宽铺开，首屏是一行四格速览：
+本场景典型花费、输入单价、输出单价、上下文；再往下是两栏正文：
 
-- 中文简介、一句话定位、档位、上下文、发布日
+- 中文简介（与顶部一句话定位不同时才单独成段，不重复）
 - **价格对照**：官方 API 与 OpenRouter 并排，只列渠道、输入/输出/缓存单价；未上架则注明；差价过大时给一句提醒
 - 峰时/闲时价格、促销到期提醒
 - 能力特点、七个场景的评级条
-- **4 个使用案例**（按该模型最擅长的场景轮换）
+- **4 个使用案例**（按该模型最擅长的场景轮换，宽屏两列）
 - **如何用得更好**：缓存前缀、推理强度、工具调用、图片输入、闲时批处理等
 - 优点 / 注意事项、全部资料来源链接
+- 右栏是常驻参数卡（档位、上下文、最大输出、发布、模态、缓存读写、证据强度）
 
 ## 价格口径
 
@@ -92,7 +94,7 @@ node scripts/smoke-client.mjs     # 渲染、四组推荐、整页详情自检
 
 安装：
 
-1. 下载 [Release](https://github.com/davzlcm/model-price-radar/releases) 里的 `model-price-radar-1.4.6.zip` 并解压，
+1. 下载 [Release](https://github.com/davzlcm/model-price-radar/releases) 里最新的 `model-price-radar-*.zip` 并解压，
    或者 `git clone https://github.com/davzlcm/model-price-radar.git`；
 2. 在 DSH 里执行 `plugin_manager install_bundle`，target 指向解压后的**绝对路径**；
 3. 重装前先 bump `package.json` 的 version，否则会提示 already-installed。

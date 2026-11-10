@@ -523,6 +523,8 @@ async function main() {
   const cases = findAll(runtime.tree(), (node) => node.props && node.props.className === 'mpr-case')
   check('detail page opens as a full view', Boolean(findAll(runtime.tree(), (node) => String(node.className).includes('mpr-detail')).length))
   check('detail shows the price comparison section', text.includes('价格对照'))
+  check('detail opens with four quick stats', findAll(runtime.tree(), (node) => node.props && node.props.className === 'mpr-stat').length === 4)
+  check('tagline is not repeated as an overview paragraph', text.split('DeepSeek V4.1 Flash 1017 的一句话定位').length - 1 === 1)
   check('detail shows both channels', text.includes('官方 API') && text.includes('OpenRouter'))
   check('detail drops the source sub-labels', findAll(runtime.tree(), (node) => node.props && node.props.className === 'tr-sub').length === 0 && !text.includes('test/deepseek'))
   check('detail explains peak pricing', text.includes('闲时') && text.includes('峰时'))
