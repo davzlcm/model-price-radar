@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Model price radar">
+  <defs>
+    <linearGradient id="mpr-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f4c81"/>
+      <stop offset="1" stop-color="#1f8a8a"/>
+    </linearGradient>
+    <linearGradient id="mpr-sweep" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9ff5d8" stop-opacity="0"/>
+      <stop offset="1" stop-color="#9ff5d8" stop-opacity="0.85"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#mpr-bg)"/>
+  <g fill="none" stroke="#d8f7ee" stroke-opacity="0.55" stroke-width="2">
+    <circle cx="32" cy="34" r="6"/>
+    <circle cx="32" cy="34" r="13" stroke-opacity="0.4"/>
+    <circle cx="32" cy="34" r="20" stroke-opacity="0.28"/>
+  </g>
+  <path d="M32 34 L32 14" stroke="#d8f7ee" stroke-opacity="0.5" stroke-width="2"/>
+  <path d="M12 34 H52" stroke="#d8f7ee" stroke-opacity="0.35" stroke-width="2"/>
+  <path d="M32 34 L49 22 L32 34 L32 46 Z" fill="url(#mpr-sweep)"/>
+  <circle cx="32" cy="34" r="2.6" fill="#ffffff"/>
+  <circle cx="43" cy="26" r="2" fill="#9ff5d8"/>
+  <path d="M14 52 H50" stroke="#9ff5d8" stroke-width="2.4" stroke-linecap="round" stroke-opacity="0.9"/>
+  <path d="M14 47 V57" stroke="#9ff5d8" stroke-width="2.4" stroke-linecap="round" stroke-opacity="0.6"/>
+</svg>

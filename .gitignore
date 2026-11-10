@@ -1,0 +1,7 @@
+node_modules/
+*.log
+_probe.json
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

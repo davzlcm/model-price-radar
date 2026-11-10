@@ -1,0 +1,14 @@
+{
+  "_readme": "各厂商的顶级旗舰型号。旗舰只在「旗舰模型」分类中展示，不再进入「效果最好」；次旗舰（如 Opus）负责效果最好一栏。按厂商 key 匹配，名称需与 models.dev 一致。",
+  "updatedAt": "2026-11-10",
+  "flagships": {
+    "deepseek": ["DeepSeek V4 Pro"],
+    "qwen": ["Qwen3.8 Max"],
+    "kimi": ["Kimi K3.1 Pro"],
+    "glm": ["GLM-5.3"],
+    "openai": ["GPT-6 Astra"],
+    "anthropic": ["Claude Fable 5.2"],
+    "google": ["Gemini 4 Argon"],
+    "meta": ["Muse Spark 1.3"]
+  }
+}

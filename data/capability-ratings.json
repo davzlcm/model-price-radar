@@ -1,0 +1,757 @@
+{
+  "updatedAt": "2026-11-09",
+  "entries": [
+    {
+      "model": "deepseek/deepseek-flash",
+      "name": "DeepSeek V4.1 Flash 1017",
+      "position": "主力",
+      "tagline": "低价长上下文主力",
+      "ratings": {
+        "quick": "A",
+        "writing": "B",
+        "docs": "B",
+        "code": "A",
+        "ops": "C",
+        "agent": "B",
+        "talk": "B"
+      },
+      "facts": [
+        "上下文 1M、最大输出 384K，$0.15/$0.6，缓存命中 $0.003/M",
+        "552B MoE，输入/输出仅激活 8B/16B，KV 缓存降至前代 1/4",
+        "开源权重（Hugging Face、ModelScope）",
+        "原生视觉理解，支持可调思考强度与工具调用",
+        "官方称性能、成本、速度均超 V4-Pro，V4-Pro 请求已开始路由到本模型"
+      ],
+      "weaknesses": [
+        "事实性幻觉偏高：第三方压力测试声称级幻觉率 13.1%（无工具）/ 23.3%（有工具）",
+        "无工具时空间/3D 推理弱（BenchCAD 41.2，K3.1 Pro 72.8）"
+      ],
+      "sources": [
+        "https://api-docs.deepseek.com/news/news261017/",
+        "https://api-docs.deepseek.com/news/news260910",
+        "https://www.kimi.com/en/blog/kimi-k3-1-pro"
+      ],
+      "confidence": "high"
+    },
+    {
+      "model": "deepseek/deepseek-v4-pro",
+      "name": "DeepSeek V4 Pro",
+      "position": "旗舰",
+      "tagline": "退役中的前代旗舰",
+      "ratings": {
+        "quick": "C",
+        "writing": "B",
+        "docs": "B",
+        "code": "B",
+        "ops": "B",
+        "agent": "B",
+        "talk": "B"
+      },
+      "facts": [
+        "上下文 1M，$0.66/$1.98，约为 V4.1-Flash 的 4.4 倍",
+        "支持思考/非思考双模式，思考强度 low/high/max",
+        "原生支持 OpenAI Responses API，面向 Codex 等 Agent 工具",
+        "开源权重，但不支持视觉输入",
+        "官方自 2026-09-14 起把 deepseek-v4-pro 请求路由至 V4.1-Flash"
+      ],
+      "weaknesses": [
+        "官方已启动下线，实际调到的可能已是 V4.1-Flash，继续采购无意义",
+        "同价位能力被 V4.1-Flash 全面超越，且缺视觉"
+      ],
+      "sources": [
+        "https://api-docs.deepseek.com/news/news260813",
+        "https://api-docs.deepseek.com/news/news260910"
+      ],
+      "confidence": "high"
+    },
+    {
+      "model": "qwen/qwen3.8-max",
+      "name": "Qwen3.8 Max",
+      "position": "旗舰",
+      "tagline": "2.4T 多模态旗舰",
+      "ratings": {
+        "quick": "C",
+        "writing": "A",
+        "docs": "A",
+        "code": "A",
+        "ops": "B",
+        "agent": "A",
+        "talk": "A"
+      },
+      "facts": [
+        "2.4T 总参 / 约 95B 激活的稀疏 MoE，1M 上下文、131K 输出",
+        "原生支持文本、图像、视频输入，长视频与长文档解析",
+        "可支撑数十步工具循环，适配 Hermes Agent、OpenClaw 等框架",
+        "官方称首次开源 Max 级权重（自定义许可），价格表仍标注未开源",
+        "国内 12 元/36 元每百万 token，支持上下文缓存"
+      ],
+      "weaknesses": [
+        "输入单价约为 3.8-Flash 的 15 倍，简单任务不划算",
+        "思考链路长，首字延迟高"
+      ],
+      "sources": [
+        "https://developer.aliyun.com/article/1761653",
+        "https://developer.aliyun.com/article/1762972",
+        "https://api.koalaapi.com/blog/qwen3-8-max-flash-cost-comparison"
+      ],
+      "confidence": "high"
+    },
+    {
+      "model": "qwen/qwen3.8-flash",
+      "name": "Qwen3.8 Flash",
+      "position": "主力",
+      "tagline": "高并发多模态主力",
+      "ratings": {
+        "quick": "A",
+        "writing": "B",
+        "docs": "B",
+        "code": "B",
+        "ops": "C",
+        "agent": "B",
+        "talk": "C"
+      },
+      "facts": [
+        "1M 上下文、131K 输出，输入图片/文本/视频",
+        "兼容 OpenAI 与 Anthropic 协议，可直接接 Claude Code、Codex",
+        "编码与 Agent 稳定性较 3.7-Flash 明显增强，适合中小型 Agent",
+        "支持函数调用、结构化输出、上下文缓存；非开源"
+      ],
+      "weaknesses": [
+        "超长文档远端信息召回与深度推演弱于 Max 系列",
+        "多工具长循环仍可能 JSON 格式错乱，需应用侧校验"
+      ],
+      "sources": [
+        "https://www.alibabacloud.com/help/zh/model-studio/qwen3-8-flash",
+        "https://developer.aliyun.com/article/1762972"
+      ],
+      "confidence": "high"
+    },
+    {
+      "model": "qwen/qwen3.7-plus",
+      "name": "Qwen3.7 Plus",
+      "position": "主力",
+      "tagline": "均衡多模态主力",
+      "ratings": {
+        "quick": "B",
+        "writing": "B",
+        "docs": "B",
+        "code": "B",
+        "ops": "C",
+        "agent": "B",
+        "talk": "B"
+      },
+      "facts": [
+        "1M 上下文、131K 输出，输入图片/文本/视频",
+        "主打 GUI 屏幕理解与截图转代码（Vibe Coding）",
+        "支持函数调用、结构化输出、联网搜索、前缀续写",
+        "3.8 代没有更新 Plus 档，3.7-Plus 仍是在售 Plus 主力"
+      ],
+      "weaknesses": [
+        "复杂逻辑与长周期 Agent 明显弱于 Max 系列",
+        "比 3.8-Flash 贵约 2.3 倍，编码代际反而更旧"
+      ],
+      "sources": [
+        "https://www.alibabacloud.com/help/zh/model-studio/qwen3-7-plus",
+        "https://developer.aliyun.com/article/1762972"
+      ],
+      "confidence": "high"
+    },
+    {
+      "model": "qwen/qwen3.8-omni-flash",
+      "name": "Qwen3.8 Omni Flash",
+      "position": "轻量",
+      "tagline": "音视频理解专用",
+      "ratings": {
+        "quick": "B",
+        "writing": "C",
+        "docs": "C",
+        "code": "D",
+        "ops": "D",
+        "agent": "C",
+        "talk": "C"
+      },
+      "facts": [
+        "文本/图片/音频/视频输入，1M 上下文、131K 输出",
+        "音频覆盖 113 种语言与方言，支持多通道空间音频",
+        "默认开启深度思考、可调强度，支持自定义工具调用",
+        "非开源，价格与 3.8-Flash 同档"
+      ],
+      "weaknesses": [
+        "纯文本写作与代码不是设计目标，明显弱于同价 Flash",
+        "不适合当通用对话或运维主力"
+      ],
+      "sources": [
+        "https://www.alibabacloud.com/help/zh/model-studio/qwen3-8-omni-flash"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "model": "kimi/kimi-k3.1-pro",
+      "name": "Kimi K3.1 Pro",
+      "position": "旗舰",
+      "tagline": "开源旗舰，编程与办公强",
+      "ratings": {
+        "quick": "C",
+        "writing": "A",
+        "docs": "A",
+        "code": "A",
+        "ops": "A",
+        "agent": "A",
+        "talk": "A"
+      },
+      "facts": [
+        "3T 级（K3 基座 2.8T）开源权重，1M 上下文、原生视觉",
+        "Terminal-Bench 4.0 得 65.7%，接近 Claude Opus 5.5 的 66.4%",
+        "OfficeQA Pro v2 得 64.4 为当前最佳，强于金融/办公文档",
+        "始终开启思考，评测用 max 思考强度",
+        "压力测试声称级幻觉率 8.3%，低于 DeepSeek/GLM 同测"
+      ],
+      "weaknesses": [
+        "$1.94/$10.17，简单任务成本高",
+        "始终思考，快问快答延迟偏高"
+      ],
+      "sources": [
+        "https://www.kimi.com/en/blog/kimi-k3-1-pro"
+      ],
+      "confidence": "high"
+    },
+    {
+      "model": "kimi/kimi-k3",
+      "name": "Kimi K3",
+      "position": "主力",
+      "tagline": "上代开源旗舰",
+      "ratings": {
+        "quick": "C",
+        "writing": "B",
+        "docs": "B",
+        "code": "A",
+        "ops": "B",
+        "agent": "A",
+        "talk": "A"
+      },
+      "facts": [
+        "2.8T 总参，KDA + Attention Residuals 架构，原生视觉",
+        "1M 上下文，开源权重（2026-07-27 前放出）",
+        "默认 max 思考强度，可切低/高",
+        "K3.1 Pro 即其加大后训练的版本，编码与 Agent 全面更强"
+      ],
+      "weaknesses": [
+        "已被 K3.1 Pro 全面超越，价格却接近",
+        "思考默认拉满，简单任务响应慢"
+      ],
+      "sources": [
+        "https://www.kimi.com/en/blog/kimi-k3",
+        "https://www.kimi.com/en/blog/kimi-k3-1-pro"
+      ],
+      "confidence": "high"
+    },
+    {
+      "model": "kimi/kimi-k2.7-code",
+      "name": "Kimi K2.7 Code",
+      "position": "主力",
+      "tagline": "代码专用 Agent 模型",
+      "ratings": {
+        "quick": "C",
+        "writing": "C",
+        "docs": "C",
+        "code": "A",
+        "ops": "B",
+        "agent": "B",
+        "talk": "C"
+      },
+      "facts": [
+        "1T MoE / 32B 激活，256K 上下文，内置 MoonViT 视觉编码器",
+        "开源权重，经 Kimi Code / Kimi API 提供",
+        "不支持非思考模式，一律以思考状态运行",
+        "思考 token 比 K2.6 少约 30%，长程仓库任务更稳",
+        "官方建议写作、分析、闲聊改用 K2.6"
+      ],
+      "weaknesses": [
+        "写作/办公/闲聊弱，官方自己也不推荐",
+        "上下文仅 256K，低于同门 K3 系列"
+      ],
+      "sources": [
+        "https://www.kimi.ai/zh-hant/resources/kimi-k2-7-code"
+      ],
+      "confidence": "high"
+    },
+    {
+      "model": "glm/glm-5.3",
+      "name": "GLM-5.3",
+      "position": "旗舰",
+      "tagline": "长程编码旗舰",
+      "ratings": {
+        "quick": "C",
+        "writing": "B",
+        "docs": "B",
+        "code": "A",
+        "ops": "B",
+        "agent": "A",
+        "talk": "B"
+      },
+      "facts": [
+        "与 GLM-5.2 同基座，全部提升来自后训练",
+        "1M 上下文、128K 输出，仅文本输入",
+        "始终开启思考，支持 low/high/max 三档强度",
+        "Z.ai Code Bench 较 5.2 提升 50%，Terminal Bench 3.0 等达开源 SOTA",
+        "开源权重；CyberGym 漏洞发现取得当前最佳"
+      ],
+      "weaknesses": [
+        "长思考易耗尽预算返回空正文，第三方实测多例",
+        "不支持视觉，多模态需换 Flash 档"
+      ],
+      "sources": [
+        "https://docs.bigmodel.cn/cn/guide/models/text/glm-5.3",
+        "https://z.ai/blog/glm-5.3",
+        "https://crazyrouter.com/zh/blog/glm-5-3-vs-glm-5-2-hard-benchmark-2026"
+      ],
+      "confidence": "high"
+    },
+    {
+      "model": "glm/glm-5.3-flash",
+      "name": "GLM-5.3-Flash",
+      "position": "主力",
+      "tagline": "原生多模态低成本主力",
+      "ratings": {
+        "quick": "A",
+        "writing": "B",
+        "docs": "A",
+        "code": "B",
+        "ops": "C",
+        "agent": "B",
+        "talk": "B"
+      },
+      "facts": [
+        "320B 总参 / 18B 激活，稀疏注意力+线性注意力混合架构",
+        "1M 上下文，输入视频/图像/文本/文件",
+        "视觉反馈进入编码循环，可边看渲染结果边改代码",
+        "可交付 PPTX/PDF/DOCX/XLSX 成品，适合办公流水线",
+        "开源权重，单价约为 GLM-5.3 的 1/10"
+      ],
+      "weaknesses": [
+        "复杂推理与长程 Agent 不及 GLM-5.3",
+        "高难或意图模糊的任务容易给出浅层答案"
+      ],
+      "sources": [
+        "https://docs.bigmodel.cn/cn/guide/models/vlm/glm-5.3-flash"
+      ],
+      "confidence": "high"
+    },
+    {
+      "model": "glm/glm-5.3-flashx",
+      "name": "GLM-5.3-FlashX",
+      "position": "主力",
+      "tagline": "200 tok/s 高速档",
+      "ratings": {
+        "quick": "A",
+        "writing": "B",
+        "docs": "A",
+        "code": "B",
+        "ops": "C",
+        "agent": "B",
+        "talk": "C"
+      },
+      "facts": [
+        "与 GLM-5.3-Flash 同模型，推理速度 200 tokens/s",
+        "单价约为 Flash 的 2.5 倍，买的是更低延迟",
+        "1M 上下文，原生多模态输入",
+        "同系列另有 FlashX-Legal 法律专用版本"
+      ],
+      "weaknesses": [
+        "能力与 Flash 相同，只在延迟敏感场景值得加价",
+        "高并发长输出成本上升明显"
+      ],
+      "sources": [
+        "https://docs.bigmodel.cn/cn/guide/models/vlm/glm-5.3-flash"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "model": "openai/gpt-6.1-sol",
+      "name": "GPT-6.1 Sol",
+      "position": "主力",
+      "tagline": "旗舰级能力，五分之一价",
+      "ratings": {
+        "quick": "B",
+        "writing": "B",
+        "docs": "A",
+        "code": "A",
+        "ops": "A",
+        "agent": "A",
+        "talk": "A"
+      },
+      "facts": [
+        "上下文 1.05M，输出上限 128K，闭源",
+        "DeepSWE 与 GPT-6 Astra 基本持平，成本约为其 1/5",
+        "OSWorld 2.0 仅比 Astra 低 2.1 个百分点",
+        "AA 智能指数 52，单任务成本 $0.72（GPT-6 Sol 为 $1.05）",
+        "六档推理强度，支持工具调用、结构化输出、computer use"
+      ],
+      "weaknesses": [
+        "中文写作弱于 Claude Opus 5.5",
+        "超过 200K token 后单价翻倍至 $4/$15"
+      ],
+      "sources": [
+        "https://benchgecko.ai/model/gpt-6-1-sol",
+        "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-1-sol.html",
+        "https://gigazine.net/gsc_news/en/20260930-gpt-6-1-sol"
+      ],
+      "confidence": "high"
+    },
+    {
+      "model": "openai/gpt-6.1-terra",
+      "name": "GPT-6.1 Terra",
+      "position": "主力",
+      "tagline": "快三倍的均衡主力，主打电脑操作",
+      "ratings": {
+        "quick": "A",
+        "writing": "B",
+        "docs": "A",
+        "code": "B",
+        "ops": "A",
+        "agent": "A",
+        "talk": "B"
+      },
+      "facts": [
+        "上下文 1.05M，输出上限 128K，知识截止 2026-06-01",
+        "Agents' Last Exam 与 Astra 持平，速度快 3 倍以上",
+        "价格 $1/$5，约为 6.1 Sol 的一半；超 200K 涨至 $2/$7.5",
+        "官方定位含“更自然的写作”与截图/表单理解",
+        "AA 智能指数 48，六档推理强度"
+      ],
+      "weaknesses": [
+        "深度推理与代码上限不如 Sol/Astra",
+        "长上下文档位溢价明显"
+      ],
+      "sources": [
+        "https://benchgecko.ai/model/gpt-6-1-terra",
+        "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-1-terra.html",
+        "https://gigazine.net/gsc_news/en/20261027-gpt-6-1-terra"
+      ],
+      "confidence": "high"
+    },
+    {
+      "model": "openai/gpt-6-astra",
+      "name": "GPT-6 Astra",
+      "position": "旗舰",
+      "tagline": "最强通用旗舰，贵且慢",
+      "ratings": {
+        "quick": "C",
+        "writing": "B",
+        "docs": "A",
+        "code": "A",
+        "ops": "A",
+        "agent": "A",
+        "talk": "A"
+      },
+      "facts": [
+        "上下文 1.05M，输出上限 128K，闭源",
+        "推理档位 none/low/medium/high/xhigh/max 六档可调",
+        "知识截止 2026-04-30，支持工具调用、computer use、结构化输出",
+        "GPQA 96%、OSWorld 2.0 72.6%、DeepSWE 74.1%",
+        "AA 智能指数约 53，与 Gemini 4 Argon、Fable 5.1 同档"
+      ],
+      "weaknesses": [
+        "单价 $10/$50，是 6.1 Sol 的 5 倍",
+        "速度慢，简单任务不划算"
+      ],
+      "sources": [
+        "https://benchgecko.ai/model/gpt-6-astra",
+        "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-astra.html",
+        "https://www.gpt-know.com/378.html",
+        "https://apifox.com/apiskills/what-is-muse-wonder-meta/"
+      ],
+      "confidence": "high"
+    },
+    {
+      "model": "openai/gpt-6-luna",
+      "name": "GPT-6 Luna",
+      "position": "轻量",
+      "tagline": "最便宜的 GPT，批量活专用",
+      "ratings": {
+        "quick": "A",
+        "writing": "C",
+        "docs": "C",
+        "code": "C",
+        "ops": "C",
+        "agent": "C",
+        "talk": "D"
+      },
+      "facts": [
+        "上下文 1.05M，输出上限 128K，知识截止 2026-05-18",
+        "价格 $0.1/$0.5，超 200K 后 $0.2/$0.75",
+        "可调推理强度，定位摘要、抽取、定向问答",
+        "BenchGecko 综合 54.2（6.1 Sol 为 91.5），代码项明显偏弱",
+        "官方对标 Claude Haiku 5.5，但多项测试落后于 Haiku 5.5"
+      ],
+      "weaknesses": [
+        "复杂推理与代码差距大",
+        "长对话和深度讨论容易失焦"
+      ],
+      "sources": [
+        "https://benchgecko.ai/model/gpt-6-luna",
+        "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-luna.html",
+        "https://gigazine.net/gsc_news/en/20261008-claude-haiku-5-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "model": "anthropic/claude-fable-5.1",
+      "name": "Claude Fable 5.1",
+      "position": "旗舰",
+      "tagline": "难题攻坚旗舰，中文文风偏怪",
+      "ratings": {
+        "quick": "C",
+        "writing": "B",
+        "docs": "A",
+        "code": "A",
+        "ops": "B",
+        "agent": "A",
+        "talk": "A"
+      },
+      "facts": [
+        "上下文 1M，输出 128K，自适应思考常开、无法关闭（默认 high）",
+        "价格 $10/$50，比 Fable 5 降约 45%，仍是全场最贵档",
+        "Agent 榜第 1、编码榜第 5；AA 智能指数 53",
+        "Hemingway 专家盲评第 3，EQ-Bench v3 第 2",
+        "中文分词膨胀约 73%，中文实际成本高于标价"
+      ],
+      "weaknesses": [
+        "知识类基准偏弱，事实性不如 Opus 5.5",
+        "中文输出被指“句子破碎、不说人话”"
+      ],
+      "sources": [
+        "https://benchgecko.ai/model/claude-fable-5-1",
+        "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-fable-5-1.html",
+        "https://blog.lynxflow.co/posts/ai-novel-writing-model-benchmark-top20-2026-10/",
+        "https://www.gpt-know.com/378.html"
+      ],
+      "confidence": "high"
+    },
+    {
+      "model": "anthropic/claude-opus-5-5",
+      "name": "Claude Opus 5.5",
+      "position": "主力",
+      "tagline": "综合最强，长任务编码首选",
+      "ratings": {
+        "quick": "B",
+        "writing": "A",
+        "docs": "A",
+        "code": "A",
+        "ops": "A",
+        "agent": "A",
+        "talk": "A"
+      },
+      "facts": [
+        "上下文 1M，输出 128K，知识截止 2026-06；自适应思考常开",
+        "AA 智能指数 58，216 个模型中第 1；GDPval Elo 1846 第 1",
+        "编码榜第 1、Agent 榜第 2，AutomationBench 40.0%",
+        "官方称可连续工作 18 小时以上，3 小时审计修复 20 万行代码库",
+        "价格 $4/$20，比 Opus 5 降 20%，典型负载成本降约 40%"
+      ],
+      "weaknesses": [
+        "单任务 token 消耗高（约 11.9 万），实际成本高于单价",
+        "编辑判断偏弱，偶有“交出跑不起来的代码”"
+      ],
+      "sources": [
+        "https://benchgecko.ai/model/claude-opus-5-5",
+        "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-opus-5-5.html",
+        "https://www.gpt-know.com/378.html"
+      ],
+      "confidence": "high"
+    },
+    {
+      "model": "anthropic/claude-sonnet-5-5",
+      "name": "Claude Sonnet 5.5",
+      "position": "主力",
+      "tagline": "日常编码主力，性价比均衡",
+      "ratings": {
+        "quick": "A",
+        "writing": "B",
+        "docs": "B",
+        "code": "A",
+        "ops": "B",
+        "agent": "A",
+        "talk": "B"
+      },
+      "facts": [
+        "上下文 1M，输出 128K；思考默认开启，可用 between_tools 关前置思考",
+        "比 Sonnet 5 快 30%、便宜 30%，价格 $2/$10",
+        "AA 智能指数 56，比旗舰 Fable 5.1 高 3 分",
+        "编码榜第 3、Agent 榜第 3，Terminal-Bench 4.0 接近 Opus 5.5",
+        "免费版 Claude 的默认模型"
+      ],
+      "weaknesses": [
+        "max 档 token 消耗反而高于 Opus 5.5，成本会反超",
+        "知识类基准偏弱"
+      ],
+      "sources": [
+        "https://benchgecko.ai/model/claude-sonnet-5-5",
+        "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-sonnet-5-5.html",
+        "https://gigazine.net/gsc_news/en/20260929-claude-sonnet-5-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "model": "anthropic/claude-haiku-5-5",
+      "name": "Claude Haiku 5.5",
+      "position": "轻量",
+      "tagline": "最快最便宜，适合当子代理",
+      "ratings": {
+        "quick": "A",
+        "writing": "C",
+        "docs": "C",
+        "code": "B",
+        "ops": "C",
+        "agent": "B",
+        "talk": "D"
+      },
+      "facts": [
+        "上下文 1M，输出 128K，知识截止 2026-06",
+        "首个支持 effort 档位（low→max，默认 medium）的 Haiku",
+        "AA 智能指数 43（Haiku 4.5 仅 17），BenchGecko 综合 65.3",
+        "价格 $0.1/$0.5，超 100K token 涨至 $0.5/$2.5",
+        "Anthropic 建议与 Opus/Sonnet 5.5 搭配做子代理"
+      ],
+      "weaknesses": [
+        "中文写作与文档能力明显弱于大模型",
+        "长上下文价格跳档 5 倍"
+      ],
+      "sources": [
+        "https://benchgecko.ai/model/claude-haiku-5-5",
+        "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-haiku-5-5.html",
+        "https://gigazine.net/gsc_news/en/20261008-claude-haiku-5-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "model": "google/gemini-4-argon",
+      "name": "Gemini 4 Argon",
+      "position": "旗舰",
+      "tagline": "谷歌翻身旗舰，半价促销中",
+      "ratings": {
+        "quick": "C",
+        "writing": "A",
+        "docs": "A",
+        "code": "B",
+        "ops": "A",
+        "agent": "A",
+        "talk": "A"
+      },
+      "facts": [
+        "上下文 1M，文本/图像/音频/视频输入，输出文本；2026-10-13 GA",
+        "思考档 low/medium/high（默认 medium），支持函数调用、computer use、Google 搜索接地",
+        "AA 智能指数 53，与 GPT-6 Astra、Fable 5.1 同档",
+        "Text Arena 创意写作第 1（1519 分，Preliminary）",
+        "挂牌 $4/$20，2026-11-30 前半价 $2/$10"
+      ],
+      "weaknesses": [
+        "代码基准排名一般，工程细节不如 Claude/OpenAI 旗舰",
+        "促销价到期后成本翻倍"
+      ],
+      "sources": [
+        "https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/4-argon",
+        "https://benchgecko.ai/model/gemini-4-argon",
+        "https://gigazine.net/gsc_news/en/20261014-gemini-4-argon-available-for-everyone",
+        "https://neuraltrust.ai/blog/claude-opus-5-5-vs-gemini-benchmark"
+      ],
+      "confidence": "high"
+    },
+    {
+      "model": "google/gemini-3-8-flash",
+      "name": "Gemini 3.8 Flash",
+      "position": "主力",
+      "tagline": "最强 Flash，写作性价比高",
+      "ratings": {
+        "quick": "A",
+        "writing": "A",
+        "docs": "B",
+        "code": "B",
+        "ops": "B",
+        "agent": "B",
+        "talk": "B"
+      },
+      "facts": [
+        "上下文 1M，输出 64K，支持思考档与完整工具链（含 computer use）",
+        "官方称相对上一代 3.7 Flash 在软件工程、Agent、多步推理上有明显提升",
+        "AA 智能指数 41；GDPval Elo 1412，远高于 3.1 Pro 的 776",
+        "Hemingway 专家盲评 1093 分、第 4，写作性价比突出",
+        "价格 $0.75/$3.75，2026-12-31 后翻倍"
+      ],
+      "weaknesses": [
+        "知识类基准偏弱，长尾事实易错",
+        "2027 年起价格翻倍，需重算性价比"
+      ],
+      "sources": [
+        "https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/3-8-flash",
+        "https://benchgecko.ai/model/gemini-3-8-flash",
+        "https://blog.lynxflow.co/posts/ai-novel-writing-model-benchmark-top20-2026-10/",
+        "https://neuraltrust.ai/blog/claude-opus-5-5-vs-gemini-benchmark"
+      ],
+      "confidence": "high"
+    },
+    {
+      "model": "meta/muse-wonder",
+      "name": "Muse Wonder",
+      "position": "旗舰",
+      "tagline": "Meta 首个前沿模型，长任务强",
+      "ratings": {
+        "quick": "C",
+        "writing": "B",
+        "docs": "B",
+        "code": "B",
+        "ops": "C",
+        "agent": "A",
+        "talk": "A"
+      },
+      "facts": [
+        "上下文 1M，文本/图像/视频/音频输入，输出文本，闭源",
+        "推理常开（传 none 会 400），强度 minimal→max；无公开中文评测",
+        "价格 $4/$20、缓存 $0.2，无长上下文加价",
+        "SWE-Marathon 53.1 超过 GPT-6 Astra 42.5；幻觉率 23% 为前沿第二低",
+        "Active Memory 跨对话记忆，AA 智能指数 52"
+      ],
+      "weaknesses": [
+        "知识召回弱（AA-Omniscience 30 vs Opus 46）",
+        "终端任务与健康任务落后 Astra/Opus，token 消耗大"
+      ],
+      "sources": [
+        "https://apifox.com/apiskills/what-is-muse-wonder-meta/",
+        "https://benchgecko.ai/model/muse-wonder-1-0"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "model": "meta/muse-spark-1.3",
+      "name": "Muse Spark 1.3",
+      "position": "主力",
+      "tagline": "Meta 主力，少调用省 token",
+      "ratings": {
+        "quick": "B",
+        "writing": "B",
+        "docs": "B",
+        "code": "B",
+        "ops": "C",
+        "agent": "B",
+        "talk": "B"
+      },
+      "facts": [
+        "上下文 1M，多模态输入（含音频），闭源",
+        "比 1.2 少约 20% 工具调用、25% token（Meta 内部对比）",
+        "价格 $1.25/$4.25，缓存 $0.15；Contributor 档 $0.1/$0.2 但数据会被用于训练",
+        "Arena 文本第 9（1494）、代码第 13；五榜写作合排第 11（88.4）；中文无公开评测",
+        "支持多 Agent 协作与长程编码，最高推理档仍在限量预览"
+      ],
+      "weaknesses": [
+        "知识召回与终端任务弱于同价竞品",
+        "Contributor 低价档存在训练数据条款"
+      ],
+      "sources": [
+        "https://apifox.com/apiskills/muse-spark-13-agent-coding-tool-calls/",
+        "https://blog.lynxflow.co/posts/ai-novel-writing-model-benchmark-top20-2026-10/",
+        "https://benchgecko.ai/model/muse-spark"
+      ],
+      "confidence": "medium"
+    }
+  ]
+}

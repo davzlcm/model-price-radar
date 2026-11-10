@@ -1,0 +1,48 @@
+{
+  "updatedAt": "2026-11-10",
+  "notes": [
+    {
+      "match": [
+        "DeepSeek V4.1 Flash 1017",
+        "DeepSeek V4 Flash Vision Exp"
+      ],
+      "kind": "peak",
+      "offPeakRatio": 0.5,
+      "peakCny": { "input": 2, "output": 8, "cacheRead": 0.04 },
+      "offPeakCny": { "input": 1, "output": 4, "cacheRead": 0.02 },
+      "peakHours": "北京时间周一至周五（不含法定节假日）09:00–12:00、14:00–18:00",
+      "text": "官方标价即高峰时段价格：输入 ¥2、输出 ¥8、缓存命中 ¥0.04 每百万 token。空闲时段（含周末与法定节假日全天）为高峰的一半：输入 ¥1、输出 ¥4、缓存命中 ¥0.02。旧模型名 deepseek-v4-flash 与 deepseek-v4-flash-vision-exp 仍可调用，但由 V4.1 Flash 提供服务并按 Flash 价格计费。",
+      "source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing"
+    },
+    {
+      "match": ["DeepSeek V4 Pro"],
+      "kind": "peak",
+      "offPeakRatio": 0.5,
+      "peakCny": { "input": 9, "output": 27, "cacheRead": 0.3 },
+      "offPeakCny": { "input": 4.5, "output": 13.5, "cacheRead": 0.15 },
+      "peakHours": "北京时间周一至周五（不含法定节假日）09:00–12:00、14:00–18:00",
+      "text": "官方标价即高峰时段价格：输入 ¥9、输出 ¥27、缓存命中 ¥0.30 每百万 token。空闲时段为高峰的一半：输入 ¥4.5、输出 ¥13.5、缓存命中 ¥0.15。",
+      "source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing"
+    },
+    {
+      "match": ["Gemini 4 Argon"],
+      "kind": "promo",
+      "text": "挂牌价 $4/$20，2026-11-30 前按半价 $2/$10 计费；促销结束后成本约为当前两倍。",
+      "source": "https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/4-argon",
+      "until": "2026-11-30"
+    },
+    {
+      "match": ["Gemini 3.8 Flash"],
+      "kind": "promo",
+      "text": "现行价 $0.75/$3.75，官方公告 2026-12-31 后翻倍，之后需要重新比较性价比。",
+      "source": "https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/3-8-flash",
+      "until": "2026-12-31"
+    },
+    {
+      "match": ["Claude Fable 5.2"],
+      "kind": "note",
+      "text": "同厂 Opus 5.5 是 $4/$20，Fable 5.2 是 $8/$40；除非明确需要它的文风或超长任务，否则 Opus 更划算。",
+      "source": "https://benchgecko.ai/model/claude-fable-5-2"
+    }
+  ]
+}

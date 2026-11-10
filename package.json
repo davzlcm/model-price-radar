@@ -1,0 +1,55 @@
+{
+  "name": "@local/model-price-radar",
+  "version": "1.4.5",
+  "private": true,
+  "description": "DSH plugin: a left-sidebar price radar for domestic and international models, ranked by work scenario",
+  "license": "MIT",
+  "type": "module",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "model-pricing",
+    "llm",
+    "cost"
+  ],
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "lib/sources.js",
+    "lib/translate.js",
+    "data/baseline.json",
+    "data/capability-ratings.json",
+    "data/price-notes.json",
+    "data/descriptions-zh.json",
+    "data/flagships.json",
+    "scripts/build-baseline.mjs",
+    "scripts/smoke-host.mjs",
+    "scripts/smoke-client.mjs",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build:baseline": "node scripts/build-baseline.mjs",
+    "smoke:host": "node scripts/smoke-host.mjs",
+    "smoke:client": "node scripts/smoke-client.mjs",
+    "test": "node scripts/smoke-host.mjs && node scripts/smoke-client.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true
+    }
+  }
+}
