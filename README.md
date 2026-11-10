@@ -5,6 +5,8 @@ DSH 插件：左侧栏图标打开价格面板，按你的工作场景给出 **�
 
 ![面板预览：快问快答场景，旗舰模型与三组推荐，卡片只留名称、人民币单价与典型花费](assets/screenshot-light.png)
 
+![详情页预览：四格速览、价格对照、两列场景评级、使用案例与右栏参数卡](assets/screenshot-detail.png)
+
 ## 收录范围
 
 - **国内 4 家**：DeepSeek、通义千问、Kimi、智谱 GLM
@@ -89,7 +91,9 @@ Host 会调用当前 harness 的默认模型翻译英文介绍并缓存（同一
 ```bash
 node scripts/build-baseline.mjs   # 重新生成内置基线（含比价与价格备注匹配检查）
 node scripts/smoke-host.mjs       # Host 接口、刷新、翻译路径自检
-node scripts/smoke-client.mjs     # 渲染、四组推荐、整页详情自检
+node scripts/smoke-client.mjs       # 渲染、四组推荐、整页详情自检
+MPR_CATALOG=data/baseline.json node scripts/smoke-client.mjs   # 用真实目录再跑一遍
+MPR_CATALOG=data/baseline.json MPR_HTML_LIST=list.html node scripts/smoke-client.mjs   # 导出静态 HTML 供浏览器核对版面
 ```
 
 安装：

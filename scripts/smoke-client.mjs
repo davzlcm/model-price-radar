@@ -71,6 +71,10 @@ function toHtml(node) {
   if (style) attrs.push(`style="${escapeHtml(style)}"`)
   if (tag === 'a' && props.href) attrs.push(`href="${escapeHtml(props.href)}"`)
   if (tag === 'img' && props.src) attrs.push(`src="${escapeHtml(props.src)}"`)
+  if (tag === 'input') {
+    if (props.placeholder) attrs.push(`placeholder="${escapeHtml(props.placeholder)}"`)
+    if (props.value !== undefined && props.value !== null) attrs.push(`value="${escapeHtml(props.value)}"`)
+  }
   return `<${tag}${attrs.length ? ` ${attrs.join(' ')}` : ''}>${(node.children || []).map(toHtml).join('')}</${tag}>`
 }
 
@@ -439,6 +443,7 @@ async function realChecks(runtime, module) {
   const flagshipCount = (REAL_CATALOG.models || []).filter((model) => model.tier === 'flagship').length
   const expectedCards = 12 + flagshipCount
   const tabs = byClass(runtime.tree(), 'mpr-tab')
+  if (process.env.MPR_HTML_LIST) dumpHtml(runtime.tree(), process.env.MPR_HTML_LIST)
   check('live catalog: seven scenario tabs', tabs.length === 7, `got ${tabs.length}`)
   for (const tab of tabs) {
     const label = textOf(tab)
@@ -454,7 +459,13 @@ async function realChecks(runtime, module) {
   }
   tabs[0].props.onClick()
   await settle()
-  const first = byClass(runtime.tree(), 'mpr-card')[0]
+  const wanted = process.env.MPR_MODEL
+  const first = wanted
+    ? byClass(runtime.tree(), 'mpr-card').find((card) => {
+      const name = byClass(card, 'mpr-name')[0]
+      return name && textOf(name) === wanted
+    })
+    : byClass(runtime.tree(), 'mpr-card')[0]
   check('live catalog: a card opens the detail page', Boolean(first))
   first.props.onClick()
   await settle()
