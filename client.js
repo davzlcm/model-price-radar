@@ -402,7 +402,7 @@ window.__ModuleLoader__.load({
 .mpr-peak-row { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 6px; font-size: 12px; font-variant-numeric: tabular-nums; }
 .mpr-fine { margin: 5px 0 0; font-size: 11px; line-height: 1.55; color: var(--mpr-muted); }
 .mpr-fine--warn { color: var(--mpr-warn); }
-.mpr-fit { display: grid; gap: 7px; }
+.mpr-fit { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; row-gap: 9px; }
 .mpr-fit-row { display: grid; grid-template-columns: 84px 26px 1fr; align-items: center; gap: 8px; font-size: 12px; }
 .mpr-fit-grade { font-weight: 700; font-size: 11px; }
 .mpr-fit-grade--a { color: var(--mpr-good); }
@@ -411,6 +411,7 @@ window.__ModuleLoader__.load({
 .mpr-fit-grade--d { color: var(--mpr-bad); }
 .mpr-fit-bar { height: 6px; border-radius: 3px; background: var(--mpr-surface-3); overflow: hidden; }
 .mpr-fit-bar i { display: block; height: 100%; background: var(--mpr-accent); border-radius: 3px; }
+.mpr-fit-note { margin: 12px 0 0; }
 .mpr-cases { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .mpr-case { display: flex; gap: 12px; padding: 12px 14px; border: 1px solid var(--mpr-border); border-radius: 10px; background: var(--mpr-surface); }
 .mpr-case-no { flex: 0 0 auto; font-family: var(--mpr-serif); font-size: 18px; line-height: 1.1; color: var(--mpr-accent); }
@@ -1162,8 +1163,8 @@ window.__ModuleLoader__.load({
           h('span', null, scenario.name),
           h('span', { className: `mpr-fit-grade${grade ? ` mpr-fit-grade--${grade.toLowerCase()}` : ''}` }, grade || '—'),
           h('div', { className: 'mpr-fit-bar' },
-            h('i', { style: { width: grade ? `${gradeRank(grade) * 25}%` : '0%' } })),
-          h('span', { className: 'mpr-fine' }, scenario.hint))
+            h('i', { style: { width: grade ? `${gradeRank(grade) * 25}%` : '0%' } }))
+        )
       }))
     }
 
@@ -1243,10 +1244,9 @@ window.__ModuleLoader__.load({
                   h(PriceTable, { model, t, rate, scenario }),
                   h(PriceNotes, { model, rate, t })),
                 h(Section, { title: t('caps') }, h(CapabilityBlock, { model, t })),
-                h(Section, { title: t('scenarios') },
-                  research
-                    ? h(ScenarioFit, { model, t })
-                    : h('p', { className: 'mpr-fine' }, '这款模型还没有人工调研评级，推荐依据是能力参数与榜单名次。')),
+                research
+                  ? h(Section, { title: t('scenarios') }, h(ScenarioFit, { model, t }))
+                  : null,
                 h(Section, { title: t('useCases') },
                   h('ol', { className: 'mpr-cases' }, cases.map((item, index) => h('li', {
                     key: `${item.scenario}-${index}`,

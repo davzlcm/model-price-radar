@@ -5,7 +5,7 @@
 // tiny React stand-in. It is not a browser: the goal is to prove the surfaces
 // mount, the three recommendation groups fill, the detail page renders every
 // section, and no vendor label or USD figure leaks into the output.
-import { readFileSync } from 'node:fs'
+import { readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import vm from 'node:vm'
@@ -40,6 +40,59 @@ function findAll(node, predicate, out = []) {
   if (predicate(node)) out.push(node)
   for (const child of node.children || []) findAll(child, predicate, out)
   return out
+}
+
+// ------------------------------------------------------- static HTML export
+// The tree above is plain data, so it can be serialised back to markup and
+// opened in a real browser. That is how the layout is eyeballed after a change:
+//   MPR_HTML=preview-detail.html node scripts/smoke-client.mjs
+const HTML_ESCAPES = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"]/g, (char) => HTML_ESCAPES[char])
+}
+
+function styleText(style) {
+  return Object.keys(style || {})
+    .filter((key) => style[key] !== undefined && style[key] !== null && style[key] !== '')
+    .map((key) => `${key.replace(/[A-Z]/g, (char) => `-${char.toLowerCase()}`)}:${style[key]}`)
+    .join(';')
+}
+
+function toHtml(node) {
+  if (!node) return ''
+  if (node.text !== undefined) return escapeHtml(node.text)
+  const tag = typeof node.type === 'string' ? node.type : 'div'
+  const props = node.props || {}
+  const className = props.className || node.className
+  const attrs = []
+  if (className) attrs.push(`class="${escapeHtml(className)}"`)
+  const style = styleText(props.style)
+  if (style) attrs.push(`style="${escapeHtml(style)}"`)
+  if (tag === 'a' && props.href) attrs.push(`href="${escapeHtml(props.href)}"`)
+  if (tag === 'img' && props.src) attrs.push(`src="${escapeHtml(props.src)}"`)
+  return `<${tag}${attrs.length ? ` ${attrs.join(' ')}` : ''}>${(node.children || []).map(toHtml).join('')}</${tag}>`
+}
+
+function dumpHtml(tree, target) {
+  const css = (source.match(/const CSS = `([\s\S]*?)`\n/) || [])[1]
+  if (!css) throw new Error('could not find the CSS block in client.js')
+  const html = `<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<style>
+${css}
+html, body { margin: 0; height: 100%; }
+</style>
+</head>
+<body>
+${toHtml(tree)}
+</body>
+</html>
+`
+  writeFileSync(target, html)
+  console.log(`  ..   wrote ${target}`)
 }
 
 // ---------------------------------------------------------------- React stand-in
@@ -414,6 +467,7 @@ async function realChecks(runtime, module) {
   check('live catalog: detail lists pros and caveats', text.includes('优点') && text.includes('注意事项'))
   check('live catalog: detail stays CNY only', !text.includes('$'))
   check('live catalog: detail has no blank values', !/undefined|NaN/.test(text))
+  if (process.env.MPR_HTML_REAL) dumpHtml(detail, process.env.MPR_HTML_REAL)
   const back = byClass(detail, 'mpr-back')[0]
   back.props.onClick()
   await settle()
@@ -534,6 +588,8 @@ async function main() {
   check('detail shows the researched tagline', text.includes('DeepSeek V4.1 Flash 1017 的一句话定位'), text.slice(0, 500))
   check('detail keeps the Chinese summary only', text.includes('DeepSeek V4.1 Flash 1017 的中文介绍'))
   check('detail keeps CNY only', !text.includes('$'))
+
+  if (process.env.MPR_HTML) dumpHtml(runtime.tree(), process.env.MPR_HTML)
 
   const back = findAll(runtime.tree(), (node) => node.props && String(node.props.className).includes('mpr-back'))[0]
   back.props.onClick()

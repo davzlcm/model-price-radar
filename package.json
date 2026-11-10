@@ -1,6 +1,6 @@
 {
   "name": "@local/model-price-radar",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "private": true,
   "description": "DSH plugin: a left-sidebar price radar for domestic and international models, ranked by work scenario",
   "license": "MIT",

@@ -5,3 +5,6 @@ _probe.json
 Thumbs.db
 .idea/
 .vscode/
+
+preview-*.html
+preview-*.png
