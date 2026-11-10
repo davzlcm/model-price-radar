@@ -3,6 +3,8 @@
 DSH 插件：左侧栏图标打开价格面板，按你的工作场景给出 **各家旗舰 + 12 款推荐**，每款都能展开成一整页的中文说明书——
 价格（人民币）、能力、参数、适用场景、使用案例、怎么用更好、优缺点。
 
+![面板预览：快问快答场景，旗舰模型与三组推荐，卡片只留名称、人民币单价与典型花费](assets/screenshot-light.png)
+
 ## 收录范围
 
 - **国内 4 家**：DeepSeek、通义千问、Kimi、智谱 GLM
@@ -88,7 +90,12 @@ node scripts/smoke-host.mjs       # Host 接口、刷新、翻译路径自检
 node scripts/smoke-client.mjs     # 渲染、四组推荐、整页详情自检
 ```
 
-安装：`plugin_manager install_bundle` → target 指向本目录绝对路径。每次重装前先 bump `package.json` 的 version。
+安装：
+
+1. 下载 [Release](https://github.com/davzlcm/model-price-radar/releases) 里的 `model-price-radar-1.4.6.zip` 并解压，
+   或者 `git clone https://github.com/davzlcm/model-price-radar.git`；
+2. 在 DSH 里执行 `plugin_manager install_bundle`，target 指向解压后的**绝对路径**；
+3. 重装前先 bump `package.json` 的 version，否则会提示 already-installed。
 
 ## 文件
 
@@ -105,6 +112,7 @@ node scripts/smoke-client.mjs     # 渲染、四组推荐、整页详情自检
 | `data/flagships.json` | 每家厂商的旗舰型号名单 |
 | `scripts/build-baseline.mjs` | 重新生成基线 |
 | `scripts/smoke-*.mjs` | 自检脚本 |
+| `assets/screenshot-light.png` | README 里的面板预览图 |
 
 ## 许可
 

@@ -498,16 +498,14 @@ window.__ModuleLoader__.load({
       return yuan(value, rate)
     }
 
-    /** Small task costs read better as a fraction of a yuan than as ¥0.00. */
+    /** Every cost stays in yuan; tiny amounts just trade decimals for precision. */
     function yuanCost(value, rate) {
       const amount = usd(value) * (Number.isFinite(rate) ? rate : 7.1)
       if (!Number.isFinite(amount)) return '—'
       if (amount === 0) return '¥0'
       if (amount >= 0.1) return `¥${amount.toFixed(2)}`
-      if (amount >= 0.01) return `¥${amount.toFixed(3)}`
-      const fen = amount * 100
-      if (fen >= 0.01) return `${fen.toFixed(2)} 分`
-      return `${(amount * 1000).toFixed(2)} 厘`
+      if (amount >= 0.01) return `¥${amount.toFixed(3).replace(/0+$/, '').replace(/\.$/, '')}`
+      return `¥${amount.toPrecision(2)}`
     }
 
     /** Rewrite quoted USD amounts inside research prose into CNY. */
